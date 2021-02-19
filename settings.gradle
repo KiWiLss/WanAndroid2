@@ -1,0 +1,4 @@
+includeBuild("version")
+//include ':version'
+include ':app'
+rootProject.name = "WanAndroid"
