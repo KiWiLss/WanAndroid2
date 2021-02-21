@@ -1,4 +1,5 @@
 import com.kiwilss.version.AndroidX
+import com.kiwilss.version.BuildConfig
 
 plugins {
     id "com.kiwilss.version"
@@ -6,19 +7,27 @@ plugins {
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion BuildConfig.compileSdkVersion
+    buildToolsVersion BuildConfig.buildToolsVersion
 
     defaultConfig {
         applicationId "com.kiwilss.wanandroid"
-        minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion BuildConfig.minSdkVersion
+        targetSdkVersion BuildConfig.targetSdkVersion
+        versionCode BuildConfig.versionCode
+        versionName BuildConfig.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -27,6 +36,31 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
+    packagingOptions {
+        exclude 'META-INF/library_release.kotlin_module'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+    }
+
 }
 
 dependencies {
@@ -39,5 +73,46 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+
+    implementation(AndroidX.arouter)
+    kapt AndroidX.arouterKapt
+
+    implementation(AndroidX.glide)
+    annotationProcessor AndroidX.glideCompiler
+
+    implementation(AndroidX.lifecycleExtensions)
+    implementation(AndroidX.viewBinding)
+    implementation(AndroidX.viewModel)
+    implementation(AndroidX.liveData)
+    implementation(AndroidX.startup)
+    implementation(AndroidX.design)
+    implementation(AndroidX.flexbox)
+    implementation(AndroidX.utilcodex)
+    implementation(AndroidX.fastjson)
+    implementation(AndroidX.statusbar)
+
+    implementation(AndroidX.banner)
     implementation(AndroidX.baseRecyclerViewAdapterHelper)
+    implementation(AndroidX.agentweb)
+    implementation(AndroidX.moshi)
+    implementation(AndroidX.retrofit)
+    implementation(AndroidX.converterMoshi)
+    implementation(AndroidX.cookie)
+    implementation(AndroidX.smartToast)
+    implementation(AndroidX.xpopup)
+    //implementation(AndroidX.lxjKtx)
+    implementation(AndroidX.permissionx)
+    implementation(AndroidX.multidex)
+    implementation(AndroidX.liveEventBus)
+    implementation(AndroidX.leakcanary)
+
+    implementation(AndroidX.swiperefresh)
+    implementation(AndroidX.superTextView)
+    implementation(AndroidX.loadingHelp)
+    implementation(AndroidX.gson)
+    implementation(AndroidX.progressManager)
+//    implementation 'com.lxj:androidktx:1.10.52'
+//    implementation 'com.lxj:xpopup:2.2.20'
+
+
 }
