@@ -89,7 +89,9 @@ dependencies {
     implementation(AndroidX.flexbox)
     implementation(AndroidX.utilcodex)
     implementation(AndroidX.fastjson)
+
     implementation(AndroidX.statusbar)
+    implementation(AndroidX.statusbarktx)
 
     implementation(AndroidX.banner)
     implementation(AndroidX.baseRecyclerViewAdapterHelper)

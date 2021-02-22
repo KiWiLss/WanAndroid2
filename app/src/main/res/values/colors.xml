@@ -3,4 +3,31 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+
+
+    <!--    black-->
+    <color name="black">#000000</color>
+    <color name="black_333333">#333333</color>
+    <color name="black_666666">#666666</color>
+    <color name="black_999999">#999999</color>
+    <color name="black_f2f2f2">#f2f2f2</color>
+    <color name="black_e6e6e6">#e6e6e6</color>
+    <color name="black_62">#99000000</color>
+    <!--    white-->
+    <color name="white">#ffffff</color>
+    <!--    red-->
+    <color name="red">#ff0000</color>
+    <color name="red_F7E6ED">#F7E6ED</color>
+    <color name="red_FF8EB7">#FF8EB7</color>
+    <color name="red_FF6D84">#FF6D84</color>
+    <!--    blue-->
+    <color name="blue_74D3FF">#74D3FF</color>
+    <!--    green-->
+    <color name="green_07C0C2">#07C0C2</color>
+    <color name="green_07C0C2_10">#1a07C0C2</color>
+    <color name="green_07C0C2_60">#9907C0C2</color>
+    <!--    yellow-->
+    <color name="yellow_FF9B52">#FF9B52</color>
+
 </resources>

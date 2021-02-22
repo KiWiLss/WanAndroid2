@@ -8,6 +8,9 @@ package com.kiwilss.wanandroid.config
  * @desc   : {DESCRIPTION}
  */
 object Constant {
-
+    /**
+     * 是否打印日志
+     */
+    const val isShowLog = true
 
 }
