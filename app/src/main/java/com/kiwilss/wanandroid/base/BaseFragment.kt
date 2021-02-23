@@ -83,7 +83,7 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() , LoadingHelper.OnReloa
 
     fun dismissLoadingDiloag(){
         mBasePopup?.apply {
-            if (isShow) dismiss()
+            if (isShow)  dismiss()
         }
     }
 

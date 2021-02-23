@@ -12,10 +12,11 @@ import com.kiwilss.wanandroid.config.ArouterPage
 import com.kiwilss.wanandroid.databinding.ActivityMainBinding
 import com.kiwilss.wanandroid.ktx.core.click
 import com.kiwilss.wanandroid.ktx.core.saveToAlbum
+import com.kiwilss.wanandroid.ktx.startActivity
 import com.kiwilss.wanandroid.ktx.startActivityForResult
 import com.kiwilss.wanandroid.ui.about.AboutActivity
 import kotlinx.android.synthetic.main.activity_main.*
-
+@Route(path = ArouterPage.MAIN)
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
@@ -33,9 +34,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun initInterface(savedInstanceState: Bundle?) {
         tvMainHello.click {
-            AboutActivity.startActivity(this,"hello"){resultCode,data ->
-                LogUtils.e(resultCode)
-            }
+            startActivity(ArouterPage.DIALOG)
+//            AboutActivity.startActivity(this,"hello"){resultCode,data ->
+//                LogUtils.e(resultCode)
+//            }
 //            startActivityForResult(ArouterPage.ABOUT,{resultCode: Int, data: Intent? ->
 //                LogUtils.e(resultCode)
 //            },ArouterPage.KEY to "key")

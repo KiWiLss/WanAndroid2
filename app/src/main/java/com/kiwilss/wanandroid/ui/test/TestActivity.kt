@@ -2,8 +2,10 @@ package com.kiwilss.wanandroid.ui.test
 
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.dylanc.viewbinding.inflate
 import com.kiwilss.wanandroid.base.BaseActivity
 import com.kiwilss.wanandroid.config.ArouterPage
+import com.kiwilss.wanandroid.databinding.ActivityAboutBinding.inflate
 import com.kiwilss.wanandroid.databinding.ActivityTestBinding
 import com.kiwilss.wanandroid.ktx.okhttp.get
 import com.kiwilss.wanandroid.ktx.okhttp.http
@@ -20,6 +22,9 @@ import kotlinx.coroutines.withContext
  */
 @Route(path = ArouterPage.TEST)
 class TestActivity: BaseActivity<ActivityTestBinding>() {
+
+//    private val binding2: ActivityTestBinding by inflate()
+
     override fun initData() {
 
     }

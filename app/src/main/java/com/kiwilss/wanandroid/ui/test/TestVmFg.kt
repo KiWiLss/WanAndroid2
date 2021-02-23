@@ -2,6 +2,7 @@ package com.kiwilss.wanandroid.ui.test
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.net.toUri
 import com.kiwilss.wanandroid.base.BaseVMFragment
 import com.kiwilss.wanandroid.databinding.ActivityTestBinding
 import com.kiwilss.wanandroid.viewModel.CommonViewModel
@@ -24,6 +25,8 @@ class TestVmFg: BaseVMFragment<ActivityTestBinding,CommonViewModel>() {
     }
 
     override fun initInterface(view: View, savedInstanceState: Bundle?) {
+
+
     }
 
     override fun handlerError() {

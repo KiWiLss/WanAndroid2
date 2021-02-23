@@ -19,6 +19,8 @@ object ArouterPage {
 
     const val ABOUT = "/wanandroid/about"
     const val TEST = "/wanandroid/test"
+    const val MAIN = "/wanandroid/main"
+    const val DIALOG = "/wanandroid/dialog"
 
 
 }
