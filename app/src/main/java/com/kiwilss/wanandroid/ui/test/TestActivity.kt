@@ -5,6 +5,11 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.kiwilss.wanandroid.base.BaseActivity
 import com.kiwilss.wanandroid.config.ArouterPage
 import com.kiwilss.wanandroid.databinding.ActivityTestBinding
+import com.kiwilss.wanandroid.ktx.okhttp.get
+import com.kiwilss.wanandroid.ktx.okhttp.http
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  *@FileName: TestActivity
@@ -23,5 +28,12 @@ class TestActivity: BaseActivity<ActivityTestBinding>() {
     }
 
     override fun initInterface(savedInstanceState: Bundle?) {
+
+        GlobalScope.launch {
+            //val test = "http://192.168.1.103:3000/json".http().get<String>().await()
+
+
+        }
+
     }
 }

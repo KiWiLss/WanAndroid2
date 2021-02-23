@@ -1,6 +1,7 @@
 package com.kiwilss.wanandroid.base
 
 import androidx.lifecycle.*
+import com.kiwilss.wanandroid.config.HttpConstant
 import com.kiwilss.wanandroid.ktx.livedata.OnceLiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -13,7 +14,7 @@ import kotlinx.coroutines.withTimeout
  * @time   : 2021/2/22
  * @desc   : {DESCRIPTION}
  */
-class BaseViewModel : ViewModel(), LifecycleObserver {
+open class BaseViewModel : ViewModel(), LifecycleObserver {
 
     private val error by lazy { OnceLiveData<Exception>() }
 
@@ -22,7 +23,7 @@ class BaseViewModel : ViewModel(), LifecycleObserver {
     //运行在UI线程的协程
     fun launchUI(block: suspend CoroutineScope.() -> Unit) = viewModelScope.launch {
         try {
-            withTimeout(3 * 1000) {
+            withTimeout(HttpConstant.DEFAULT_TIMEOUT * 1000) {
                 block()
             }
         } catch (e: Exception) {
@@ -32,6 +33,10 @@ class BaseViewModel : ViewModel(), LifecycleObserver {
             finally.setValue(200)
         }
     }
+
+
+
+
 
     /**
      * 请求失败，出现异常

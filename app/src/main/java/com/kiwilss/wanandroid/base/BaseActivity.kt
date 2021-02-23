@@ -36,6 +36,7 @@ abstract class BaseActivity<VB : ViewBinding>: AppCompatActivity() , LoadingHelp
     override fun onReload() {
 
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         beforeSetContent(savedInstanceState)
         super.onCreate(savedInstanceState)
@@ -136,7 +137,7 @@ abstract class BaseActivity<VB : ViewBinding>: AppCompatActivity() , LoadingHelp
 
     fun dismissLoadingDiloag(){
         mBasePopup?.apply {
-            dismiss()
+            if (isShow) dismiss()
         }
         //mBasePopup = null
     }
