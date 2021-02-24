@@ -36,6 +36,7 @@
         <activity android:name=".ui.about.AboutActivity" android:label="关于我们" android:screenOrientation="portrait"/>
         <activity android:name=".ui.test.TestActivity" android:label="测试" android:screenOrientation="portrait"/>
 
+        <activity android:name=".ui.testhttp.TestHttpActivity" android:label="测试网络" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

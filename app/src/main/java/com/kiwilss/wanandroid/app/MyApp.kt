@@ -38,6 +38,8 @@ class MyApp : Application() {
             .start()
             .await()
 
+//        SmartShow.init(this)
+
         //对Activity生命周期监听
         monitorActivityLife()
     }

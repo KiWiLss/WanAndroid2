@@ -24,13 +24,13 @@ class OnceLiveData<T> : MutableLiveData<T>() {
         })
     }
 
-    override fun postValue(value: T) {
+    override fun postValue(t: T) {
         isRead.set(false)
-        super.postValue(value)
+        super.postValue(t)
     }
 
-    override fun setValue(value: T) {
+    override fun setValue(t: T) {
         isRead.set(false)
-        super.setValue(value)
+        super.setValue(t)
     }
 }

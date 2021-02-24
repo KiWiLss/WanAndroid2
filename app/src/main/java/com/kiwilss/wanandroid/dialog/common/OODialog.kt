@@ -16,10 +16,12 @@ import kotlinx.android.synthetic.main.dialog_oo.view.*
  * @time   : 2021/2/23
  * @desc   : {DESCRIPTION}
  */
-class OODialog(context: Context, private val title: String): CenterPopupView(context) {
+class OODialog(context: Context): CenterPopupView(context) {
 
 //    private val binding: DialogOoBinding by inflate()
 //    lateinit var binding: DialogOoBinding
+     var titles: String? = null
+
     override fun getImplLayoutId(): Int {
         //binding = DialogOoBinding.inflate(LayoutInflater.from(context),this,false)
         return R.layout.dialog_oo
@@ -33,7 +35,7 @@ class OODialog(context: Context, private val title: String): CenterPopupView(con
     override fun onCreate() {
         super.onCreate()
 
-        popupContentView.tv_pw_oo_title.text = title
+        popupContentView.tv_pw_oo_title.text = titles
 
 //        binding.run {
 //            tvPwOoTitle.text = "hello"
@@ -41,6 +43,10 @@ class OODialog(context: Context, private val title: String): CenterPopupView(con
 
     }
 
+    fun setTitle(title: String): OODialog{
+        this.titles = title
+        return this
+    }
 
 
 

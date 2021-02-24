@@ -33,8 +33,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun initInterface(savedInstanceState: Bundle?) {
-        tvMainHello.click {
-            startActivity(ArouterPage.DIALOG)
+        binding.btnHttp.click {
+            startActivity(ArouterPage.TEST_HTTP)
 //            AboutActivity.startActivity(this,"hello"){resultCode,data ->
 //                LogUtils.e(resultCode)
 //            }

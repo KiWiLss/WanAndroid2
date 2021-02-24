@@ -21,6 +21,7 @@ object ArouterPage {
     const val TEST = "/wanandroid/test"
     const val MAIN = "/wanandroid/main"
     const val DIALOG = "/wanandroid/dialog"
+    const val TEST_HTTP = "/wanandroid/test-http"
 
 
 }

@@ -44,6 +44,7 @@ object RetrofitClient {
                 .client(okHttpClient)
                 .addConverterFactory(MoshiConverterFactory.create())
 //                .addCallAdapterFactory(CoroutineCallAdapterFactory())
+                //.addCallAdapterFactory(LiveDataCallAdapterFactory())
                 .build()
             //OkExt.setClient(okHttpClient)
         }
@@ -74,7 +75,7 @@ object RetrofitClient {
             addInterceptor(httpLogInterceptor)
 //            addInterceptor(HeaderInterceptor())
 //            addInterceptor(SaveCookieInterceptor())
-            addInterceptor(CacheInterceptor())
+            //addInterceptor(CacheInterceptor())//设置有网无网策略
             cache(cache)  //添加缓存
             .cookieJar(cookieJar)
             connectTimeout(HttpConstant.DEFAULT_TIMEOUT, TimeUnit.SECONDS)

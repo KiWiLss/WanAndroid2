@@ -7,9 +7,9 @@ import com.kiwilss.wanandroid.config.ArouterPage
 import com.kiwilss.wanandroid.databinding.ActivityDialogBinding
 import com.kiwilss.wanandroid.dialog.common.OODialog
 import com.kiwilss.wanandroid.ktx.core.click
+import com.kiwilss.wanandroid.ktx.toastS
 import com.lxj.xpopup.XPopup
-
-
+import com.lxj.xpopup.interfaces.OnConfirmListener
 
 
 /**
@@ -27,9 +27,14 @@ class DialogActivity: BaseActivity<ActivityDialogBinding>() {
 
     override fun initEvent() {
         binding.btnOo.click {
+//            XPopup.Builder(this)
+//                .asCustom(OODialog(this).setTitle("测试一下"))
+//                .show()
             XPopup.Builder(this)
-                .asCustom(OODialog(this,"测试一下"))
-                .show()
+                .asConfirm("测试","简单测试一下") {
+                    toastS("成功")
+                }.show()
+
         }
 
     }

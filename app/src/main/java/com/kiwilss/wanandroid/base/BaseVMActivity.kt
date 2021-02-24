@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.blankj.utilcode.util.LogUtils
+import com.blankj.utilcode.util.NetworkUtils
 import com.kiwilss.wanandroid.R
 import com.kiwilss.wanandroid.ktx.toast
 import com.kiwilss.wanandroid.ktx.toastE
@@ -43,23 +44,26 @@ abstract class BaseVMActivity<VB: ViewBinding,VM: BaseViewModel>: BaseActivity<V
 
     open fun requestError(it: Exception?) {
         LogUtils.e(it)
-        it?.run {
-            when(it){
-                //请求取消
-                is CancellationException -> LogUtils.e("请求取消--$it")
-                is HttpException -> {
-                    if (it.code() == 504 ){
-                        toastE(R.string.network_exception)
-                    }else{
-                        toastE(it.message())
+        if (!NetworkUtils.isConnected()) {
+            toastE(R.string.network_exception)
+        }else{
+            it?.run {
+                when(it){
+                    //请求取消
+                    is CancellationException -> LogUtils.e("请求取消--$it")
+                    is HttpException -> {
+                        if (it.code() == 504 ){
+                            toastE(R.string.network_exception)
+                        }else{
+                            toastE(it.message())
+                        }
                     }
-                }
-                else -> {
-                    toastE(it.message)
+                    else -> {
+                        toastE(it.message)
+                    }
                 }
             }
         }
-
     }
 
     open fun requestFinally(it: Int?) {
