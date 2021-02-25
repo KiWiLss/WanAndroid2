@@ -108,13 +108,21 @@ dependencies {
     implementation(AndroidX.liveEventBus)
     implementation(AndroidX.leakcanary)
 
-    implementation(AndroidX.swiperefresh)
+//    implementation(AndroidX.swiperefresh)
+    implementation(AndroidX.smartRefresh)
+    implementation(AndroidX.smartRefreshClassics)
+    implementation(AndroidX.smartRefreshFooterClassics)
+
     implementation(AndroidX.superTextView)
     implementation(AndroidX.loadingHelp)
     implementation(AndroidX.gson)
     implementation(AndroidX.progressManager)
 //    implementation 'com.lxj:androidktx:1.10.52'
 //    implementation 'com.lxj:xpopup:2.2.20'
+
+    implementation(AndroidX.viewpager2)
+    implementation(AndroidX.stickyDecration)
+    implementation(AndroidX.lutils)
 
 
 }

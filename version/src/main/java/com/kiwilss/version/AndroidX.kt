@@ -81,6 +81,15 @@ object AndroidX {
     const val leakcanary = "com.squareup.leakcanary:leakcanary-android:2.6"
     //swiperefresh
     const val swiperefresh = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    //smart refresh
+    const val smartRefresh =  "com.scwang.smart:refresh-layout-kernel:2.0.3"      //核心必须依赖
+    const val smartRefreshClassics =  "com.scwang.smart:refresh-header-classics:2.0.3"    //经典刷新头
+    const val smartRefreshRadar =  "com.scwang.smart:refresh-header-radar:2.0.3"       //雷达刷新头
+    const val smartRefreshFalsify =  "com.scwang.smart:refresh-header-falsify:2.0.3"     //虚拟刷新头
+    const val smartRefreshMaterial =  "com.scwang.smart:refresh-header-material:2.0.3"    //谷歌刷新头
+    const val smartRefreshLevel =  "com.scwang.smart:refresh-header-two-level:2.0.3"   //二级刷新头
+    const val smartRefreshBall =  "com.scwang.smart:refresh-footer-ball:2.0.3"        //球脉冲加载
+    const val smartRefreshFooterClassics =  "com.scwang.smart:refresh-footer-classics:2.0.3"    //经典加载
     //supertextview
     const val superTextView = "com.github.lygttpod:SuperTextView:2.4.5"
     //arouter
@@ -90,6 +99,12 @@ object AndroidX {
     const val loadingHelp = "com.dylanc:loadinghelper:2.1.1"
     //viewbinding
     const val viewBinding =  "com.dylanc:viewbinding-ktx:1.0.1"
+    //viewpager2
+    const val viewpager2 = "androidx.viewpager2:viewpager2:1.0.0"
+    //recyclerview  sticky itemdecration
+    const val stickyDecration = "com.gitee.quetzalcoatl:sticky-decration:1.0.4"
+    //工具集
+    const val lutils = "com.github.KiWiLss:LUtils:1.0.8"
 
 
 }

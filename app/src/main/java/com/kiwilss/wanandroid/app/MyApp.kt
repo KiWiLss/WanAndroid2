@@ -4,15 +4,14 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.os.Bundle
-import androidx.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
-import com.blankj.utilcode.util.LogUtils
-import com.blankj.utilcode.util.Utils
-import com.coder.zzq.smartshow.core.SmartShow
-import com.kiwilss.wanandroid.config.Constant
+import com.kiwilss.wanandroid.R
 import com.kiwilss.wanandroid.help.ActivityManager
-import com.kiwilss.wanandroid.ktx.AndroidKTX
 import com.rousetime.android_startup.StartupManager
+import com.scwang.smart.refresh.footer.ClassicsFooter
+import com.scwang.smart.refresh.header.ClassicsHeader
+import com.scwang.smart.refresh.layout.SmartRefreshLayout
+
 
 /**
  *@FileName: MyApp
@@ -22,6 +21,21 @@ import com.rousetime.android_startup.StartupManager
  * @desc   : {DESCRIPTION}
  */
 class MyApp : Application() {
+
+    init {
+        //设置全局的Header构建器
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator{context, layout ->
+            layout.setPrimaryColorsId(R.color.colorAccent, R.color.white) //全局设置主题颜色
+            ClassicsHeader(context)
+        }
+
+        //设置全局的Footer构建器
+        //设置全局的Footer构建器
+        SmartRefreshLayout.setDefaultRefreshFooterCreator { context, layout -> //指定为经典Footer，默认是 BallPulseFooter
+            ClassicsFooter(context).setDrawableSize(20f)
+        }
+    }
+
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
     }
@@ -45,7 +59,7 @@ class MyApp : Application() {
     }
 
     private fun monitorActivityLife() {
-        registerActivityLifecycleCallbacks(object :Application.ActivityLifecycleCallbacks{
+        registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
             override fun onActivityCreated(p0: Activity, p1: Bundle?) {
                 ActivityManager.instance.addActivity(p0)
             }

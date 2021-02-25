@@ -7,5 +7,7 @@ package com.kiwilss.wanandroid.config
  * @time   : 2021/2/21
  * @desc   : {DESCRIPTION}
  */
-class Sp {
+object Sp {
+
+
 }

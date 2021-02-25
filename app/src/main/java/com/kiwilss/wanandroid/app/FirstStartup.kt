@@ -9,6 +9,7 @@ import com.blankj.utilcode.util.Utils
 import com.coder.zzq.smartshow.core.SmartShow
 import com.dylanc.loadinghelper.LoadingHelper
 import com.dylanc.loadinghelper.ViewType
+import com.kiwilss.lutils.LUtilsConfig
 import com.kiwilss.wanandroid.config.Constant
 import com.kiwilss.wanandroid.ktx.AndroidKTX
 import com.kiwilss.wanandroid.statuslayout.EmptyAdapter
@@ -38,6 +39,7 @@ class FirstStartup: AndroidStartup<String>() {
         }
         ARouter.init(MyApp.instance) // 尽可能早，推荐在Application中初始化
         initStatusLayout()
+        LUtilsConfig.init(context)
         return this.javaClass.simpleName
     }
 

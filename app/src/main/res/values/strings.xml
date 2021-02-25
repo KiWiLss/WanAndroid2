@@ -9,5 +9,11 @@
 
     <string name="no_know_exception">未知异常</string>
     <string name="network_exception">网络异常</string>
+    <string name="home">首页</string>
+    <string name="project">项目</string>
+    <string name="gongzhonghao">公众号</string>
+    <string name="system">体系</string>
+    <string name="my">我的</string>
+    <string name="settings">设置</string>
 
 </resources>
