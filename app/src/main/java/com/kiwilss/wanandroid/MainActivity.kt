@@ -25,11 +25,14 @@ import com.kiwilss.wanandroid.base.BaseActivity
 import com.kiwilss.wanandroid.config.ArouterPage
 import com.kiwilss.wanandroid.databinding.ActivityMainBinding
 import com.kiwilss.wanandroid.ktx.core.click
+import com.kiwilss.wanandroid.ktx.core.gone
 import com.kiwilss.wanandroid.ktx.core.saveToAlbum
+import com.kiwilss.wanandroid.ktx.core.visible
 import com.kiwilss.wanandroid.ktx.startActivity
 import com.kiwilss.wanandroid.ktx.startActivityForResult
 import com.kiwilss.wanandroid.ui.about.AboutActivity
 import com.kiwilss.wanandroid.ui.home.HomeFragment
+import com.kiwilss.wanandroid.ui.my.MyFragment
 import com.kiwilss.wanandroid.util.HomeDataBean
 import com.kiwilss.wanandroid.util.HomeDataUtils
 import kotlinx.android.synthetic.main.activity_main.*
@@ -71,6 +74,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             closeBottom()
             changeViewPager(binding.tvMy,4)
         }
+        //binding.fabUp.setImageResource(R.drawable.search_white)
+
     }
 
     private fun changeViewPager(tvText: TextView, next: Int) {
@@ -113,12 +118,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private fun initFragment() {
         mFragments.add(HomeFragment())
-        mFragments.add(HomeFragment())
+        mFragments.add(MyFragment())
         mFragments.add(HomeFragment())
         mFragments.add(HomeFragment())
         mFragments.add(HomeFragment())
         binding.vpMain.run {
-            isUserInputEnabled = false
+            isUserInputEnabled = false//设置禁止滑动
+            //orientation = ViewPager2.ORIENTATION_HORIZONTAL
             adapter = MainFragmentAdapter(this@MainActivity,mFragments)
             offscreenPageLimit = mFragments.size
         }
@@ -158,6 +164,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
                 binding.vBg.alpha = slideOffset * 0.6f
                 binding.llBottom.isSelected = slideOffset > 0
+                if (slideOffset > 0){
+                    binding.vBg.visible()
+                }else{
+                    binding.vBg.gone()
+                }
             }
 
         })

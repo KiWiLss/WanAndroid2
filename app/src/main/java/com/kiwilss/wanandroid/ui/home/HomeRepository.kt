@@ -1,6 +1,7 @@
 package com.kiwilss.wanandroid.ui.home
 
 import com.kiwilss.wanandroid.base.BaseRepository
+import com.kiwilss.wanandroid.http.RetrofitClient
 
 /**
  *@FileName: HomeRepository
@@ -10,5 +11,14 @@ import com.kiwilss.wanandroid.base.BaseRepository
  * @desc   : {DESCRIPTION}
  */
 class HomeRepository: BaseRepository() {
+
+    suspend fun getHomeBanner() = apiCall { RetrofitClient.service.getHomeBanner3() }
+
+    suspend fun getTopArticle() = apiCall { RetrofitClient.service.getTopArticle() }
+
+    suspend fun getHomeArticle(page: Int)
+            = apiCall { RetrofitClient.service.getHomeArticles(page) }
+
+
 
 }

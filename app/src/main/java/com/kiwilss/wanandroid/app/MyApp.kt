@@ -25,13 +25,14 @@ class MyApp : Application() {
     init {
         //设置全局的Header构建器
         SmartRefreshLayout.setDefaultRefreshHeaderCreator{context, layout ->
-            layout.setPrimaryColorsId(R.color.colorAccent, R.color.white) //全局设置主题颜色
+            layout.setPrimaryColorsId(R.color.blue_0063ff, R.color.white) //全局设置主题颜色,前一个背景色,后面文字颜色
             ClassicsHeader(context)
         }
 
         //设置全局的Footer构建器
         //设置全局的Footer构建器
         SmartRefreshLayout.setDefaultRefreshFooterCreator { context, layout -> //指定为经典Footer，默认是 BallPulseFooter
+            layout.setPrimaryColorsId(R.color.blue_0063ff, R.color.white)
             ClassicsFooter(context).setDrawableSize(20f)
         }
     }

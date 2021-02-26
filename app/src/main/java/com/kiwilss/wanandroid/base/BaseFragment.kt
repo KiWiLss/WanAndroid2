@@ -24,6 +24,9 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() , LoadingHelper.OnReloa
     private var _binding: VB? = null
     val binding: VB get() = _binding!!
 
+    var page = 1
+    var pageSize = 20
+
     fun getLoadingHelper(): LoadingHelper? {
         return if (activity !is BaseActivity<*>) null
         else (activity as BaseActivity<*>).mLoadingHelper

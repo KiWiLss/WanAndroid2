@@ -8,6 +8,9 @@
     <color name="translate">#00FF4081</color>
     <!--    black-->
     <color name="black">#000000</color>
+    <color name="black_10">#1a000000</color>
+    <color name="black_20">#33000000</color>
+    <color name="black_30">#4d000000</color>
     <color name="black_333333">#333333</color>
     <color name="black_666666">#666666</color>
     <color name="black_999999">#999999</color>
@@ -25,6 +28,7 @@
     <!--    blue-->
     <color name="blue_74D3FF">#74D3FF</color>
     <color name="blue_07C0C2">#07C0C2</color>
+    <color name="blue_0063ff">#0063ff</color>
     <!--    green-->
     <color name="green_07C0C2">#07C0C2</color>
     <color name="green_07C0C2_10">#1a07C0C2</color>

@@ -16,13 +16,27 @@
         android:layout_marginBottom="@dimen/m65"
         />
 
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/search_white"
+        android:layout_gravity="bottom|end"
+        app:backgroundTint="@color/blue_0063ff"
+        app:rippleColor="@color/red"
+        app:fabSize="normal"
+        android:layout_marginBottom="@dimen/m80"
+        android:layout_marginEnd="@dimen/m10"
+        app:layout_behavior=".md.behavior.ScaleDownShowBehavior"/>
 <!--    底部切换部分-->
     <View
         android:id="@+id/vBg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#000000"
-        android:alpha="0"/>
+        android:alpha="0"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:id="@+id/llBottom"

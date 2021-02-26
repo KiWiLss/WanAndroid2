@@ -124,5 +124,6 @@ dependencies {
     implementation(AndroidX.stickyDecration)
     implementation(AndroidX.lutils)
 
+    implementation(AndroidX.coil)
 
 }

@@ -105,6 +105,7 @@ object AndroidX {
     const val stickyDecration = "com.gitee.quetzalcoatl:sticky-decration:1.0.4"
     //工具集
     const val lutils = "com.github.KiWiLss:LUtils:1.0.8"
-
+    //coil
+    const val coil = ("io.coil-kt:coil:1.1.1")
 
 }

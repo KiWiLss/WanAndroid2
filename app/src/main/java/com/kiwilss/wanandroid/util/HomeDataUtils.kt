@@ -16,7 +16,7 @@ object HomeDataUtils{
 
     fun getHomeList() =
         arrayListOf<HomeDataBean>(
-            HomeDataBean("设置", R.drawable.settings,ArouterPage.ABOUT),
+            HomeDataBean("刷新", R.drawable.refresh,ArouterPage.ABOUT),
             HomeDataBean("设置", R.drawable.settings,ArouterPage.ABOUT),
             HomeDataBean("设置", R.drawable.settings,ArouterPage.ABOUT),
             HomeDataBean("设置", R.drawable.settings,ArouterPage.ABOUT),
