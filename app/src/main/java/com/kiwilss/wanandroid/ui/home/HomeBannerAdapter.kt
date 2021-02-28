@@ -12,6 +12,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.kiwilss.wanandroid.R
 import com.kiwilss.wanandroid.base.ArticleBean
+import com.kiwilss.wanandroid.ktx.core.gone
+import com.kiwilss.wanandroid.ktx.core.visible
 import com.youth.banner.adapter.BannerAdapter
 import com.youth.banner.util.BannerUtils
 
@@ -53,6 +55,20 @@ class HomeBannerAdapter(val datas: List<HomeBannerBean>):
 
 class HomeArticleAdapter: BaseQuickAdapter<ArticleBean,BaseViewHolder>(R.layout.item_fg_home_article) {
     override fun convert(holder: BaseViewHolder, item: ArticleBean) {
+
+        holder.run {
+            setText(R.id.tvItemHomeArticleName,item.author)
+            setText(R.id.tvItemHomeArticleDate,item.niceDate)
+            setText(R.id.tvItemHomeArticleTitle,item.title)
+            setText(R.id.tvItemHomeArticleTag,item.superChapterName +"."+ item.chapterName)
+        }
+//        val ivPic = holder.getView<ImageView>(R.id.ivItemHomeArticlePic)
+//        if (!item.envelopePic.isNullOrEmpty()) {
+//            ivPic.load(item.envelopePic)
+//            ivPic.visible()
+//        }else{
+//            ivPic.gone()
+//        }
 
     }
 }

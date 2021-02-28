@@ -18,11 +18,13 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.gyf.immersionbar.ktx.immersionBar
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.kiwilss.itemdecoration.IntervalItemDecoration
 import com.kiwilss.lutils.res.ResUtils
 import com.kiwilss.sticky.StickyDecoration
 import com.kiwilss.wanandroid.base.BaseActivity
 import com.kiwilss.wanandroid.config.ArouterPage
+import com.kiwilss.wanandroid.config.EventConstant
 import com.kiwilss.wanandroid.databinding.ActivityMainBinding
 import com.kiwilss.wanandroid.ktx.core.click
 import com.kiwilss.wanandroid.ktx.core.gone
@@ -47,6 +49,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     val mBottomAdapter by lazy { MainBottomAdapter() }
     lateinit var behavior: BottomSheetBehavior<LinearLayout>
     val mFragments = ArrayList<Fragment>()
+    var isSearch = true
 
     override fun initData() {
 
@@ -75,7 +78,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             changeViewPager(binding.tvMy,4)
         }
         //binding.fabUp.setImageResource(R.drawable.search_white)
+        binding.fabUp.setOnClickListener {
+            if (isSearch){
 
+            }else{
+                LiveEventBus.get(EventConstant.is_scroll_top).post(true)
+            }
+        }
     }
 
     private fun changeViewPager(tvText: TextView, next: Int) {
@@ -114,6 +123,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         initBottomList()
         //初始化各个 fragment
         initFragment()
+        LiveEventBus.get(EventConstant.search,Boolean::class.java).observe(this){
+            if (it){
+                binding.fabUp.setImageResource(R.drawable.search_white)
+            }else{
+                binding.fabUp.setImageResource(R.drawable.knowledge)
+            }
+            isSearch = it
+        }
     }
 
     private fun initFragment() {
@@ -164,6 +181,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
                 binding.vBg.alpha = slideOffset * 0.6f
                 binding.llBottom.isSelected = slideOffset > 0
+                //LogUtils.e(slideOffset)
+                val scale = (1 - slideOffset) * 1f
+                binding.fabUp.animate().scaleX(scale).scaleY(scale).start()
                 if (slideOffset > 0){
                     binding.vBg.visible()
                 }else{

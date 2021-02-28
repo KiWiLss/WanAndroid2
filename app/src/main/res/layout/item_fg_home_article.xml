@@ -1,13 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/m80"
-    android:background="@color/red"
-    android:layout_margin="@dimen/m4"
-    >
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginHorizontal="@dimen/m15">
+
+    <com.allen.library.CircleImageView
+        android:id="@+id/cvItemHomeArticleHeader"
+        android:layout_width="@dimen/m25"
+        android:layout_height="@dimen/m25"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/cat_9"
+        android:layout_marginTop="@dimen/m10"/>
+
+    <TextView
+        android:id="@+id/tvItemHomeArticleName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@string/app_name_cn"
+        android:textSize="@dimen/m12"
+        app:layout_constraintTop_toTopOf="@+id/cvItemHomeArticleHeader"
+        app:layout_constraintBottom_toBottomOf="@+id/cvItemHomeArticleHeader"
+        app:layout_constraintStart_toEndOf="@+id/cvItemHomeArticleHeader"
+        android:layout_marginStart="@dimen/m5"/>
+
+    <TextView
+        android:id="@+id/tvItemHomeArticleDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@string/app_name_cn"
+        android:textSize="@dimen/m12"
+        app:layout_constraintTop_toTopOf="@+id/cvItemHomeArticleHeader"
+        app:layout_constraintBottom_toBottomOf="@+id/cvItemHomeArticleHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/ivItemHomeArticlePic"
+        android:layout_width="@dimen/m60"
+        android:layout_height="@dimen/m60"
+        android:src="@drawable/cat_9"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toBottomOf="@+id/cvItemHomeArticleHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/tvItemHomeArticleTitle"
+        android:layout_width="@dimen/m0"
+        android:layout_height="wrap_content"
+        tools:text="设置拼命加载中拼设置拼命加载中"
+        android:maxLines="2"
+        android:textSize="@dimen/m16"
+        android:textColor="@color/black_333333"
+        android:lineSpacingExtra="@dimen/m4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvItemHomeArticleHeader"
+        app:layout_constraintEnd_toStartOf="@+id/ivItemHomeArticlePic"
+        android:layout_marginTop="@dimen/m12"/>
+
+    <TextView
+        android:id="@+id/tvItemHomeArticleTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvItemHomeArticleTitle"
+        android:text="@string/title_long"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/m12"/>
+
+    <ImageView
+        android:id="@+id/ivItemHomeBannerLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/selector_icon_like"
+        app:layout_constraintTop_toTopOf="@+id/tvItemHomeArticleTag"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
-
+    <View
+       style="@style/line_e6"
+        app:layout_constraintTop_toBottomOf="@+id/tvItemHomeArticleTag"
+        android:layout_marginTop="@dimen/m10"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

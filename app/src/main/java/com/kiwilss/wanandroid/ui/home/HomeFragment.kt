@@ -6,13 +6,16 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.LogUtils
 import com.google.android.material.appbar.AppBarLayout
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.kiwilss.lutils.res.ResUtils
 import com.kiwilss.wanandroid.R
 import com.kiwilss.wanandroid.base.ArticleBean
 import com.kiwilss.wanandroid.base.BaseVMFragment
+import com.kiwilss.wanandroid.config.EventConstant
 import com.kiwilss.wanandroid.databinding.FragmentHomeBinding
 import com.kiwilss.wanandroid.ktx.core.gone
 import com.kiwilss.wanandroid.ktx.core.visible
+import com.kiwilss.wanandroid.ktx.toast
 import com.kiwilss.wanandroid.md.AppBarStateChangeListener
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
@@ -69,9 +72,11 @@ class HomeFragment: BaseVMFragment<FragmentHomeBinding,HomeViewModel>() {
                 when (state) {
                     State.EXPANDED -> {
                         binding.toolbar.setPadding(0,0,0,0)
+                        LiveEventBus.get(EventConstant.search).post(true)
                     }
                     State.COLLAPSED -> {
                         binding.toolbar.setPadding(0,ResUtils.getDimensionPixelOffset(R.dimen.m24),0,0)
+                        LiveEventBus.get(EventConstant.search).post(false)
                     }
                     else -> {
                         binding.toolbar.setPadding(0,ResUtils.getDimensionPixelOffset(R.dimen.m24),0,0)
@@ -81,12 +86,26 @@ class HomeFragment: BaseVMFragment<FragmentHomeBinding,HomeViewModel>() {
 
         })
 
+        mArticleAdapter.addChildClickViewIds(R.id.ivItemHomeBannerLike)
+        mArticleAdapter.setOnItemClickListener { adapter, view, position ->
+
+        }
+        mArticleAdapter.setOnItemChildClickListener { adapter, view, position ->
+            toast("hello")
+        }
+
     }
 
     override fun initInterface(view: View, savedInstanceState: Bundle?) {
         binding.rvList.run {
             layoutManager = LinearLayoutManager(context)
             adapter = mArticleAdapter
+        }
+        LiveEventBus.get(EventConstant.is_scroll_top,Boolean::class.java).observe(this){
+            if (it){
+                binding.appbar.setExpanded(true)
+                binding.rvList.scrollToPosition(0)
+            }
         }
 
     }
@@ -122,8 +141,8 @@ class HomeFragment: BaseVMFragment<FragmentHomeBinding,HomeViewModel>() {
             mArticleTop.clear()
             it?.run {
                 //修改列表数据
-//                mArticleAdapter.data.addAll(0,it)
-//                mArticleAdapter.notifyDataSetChanged()
+                mArticleAdapter.data.addAll(0,it)
+                mArticleAdapter.notifyDataSetChanged()
             }
         }
         initArticles()
