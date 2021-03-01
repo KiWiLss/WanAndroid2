@@ -3,6 +3,8 @@ package com.kiwilss.wanandroid.ui.home
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.LogUtils
 import com.google.android.material.appbar.AppBarLayout
@@ -108,6 +110,7 @@ class HomeFragment: BaseVMFragment<FragmentHomeBinding,HomeViewModel>() {
             }
         }
 
+
     }
 
     override fun onResume() {
@@ -164,7 +167,7 @@ class HomeFragment: BaseVMFragment<FragmentHomeBinding,HomeViewModel>() {
             refreshFinish()
             it?.run {
                 pageCount = it.pageCount
-                if (page == 1){
+                if (page == 0){
                     mArticleAdapter.setList(it.datas)
                 }else{
                     mArticleAdapter.addData(it.datas)
@@ -177,3 +180,5 @@ class HomeFragment: BaseVMFragment<FragmentHomeBinding,HomeViewModel>() {
 
     }
 }
+
+

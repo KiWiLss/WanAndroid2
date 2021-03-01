@@ -32,8 +32,7 @@ class MyApp : Application() {
         //设置全局的Footer构建器
         //设置全局的Footer构建器
         SmartRefreshLayout.setDefaultRefreshFooterCreator { context, layout -> //指定为经典Footer，默认是 BallPulseFooter
-            layout.setPrimaryColorsId(R.color.blue_0063ff, R.color.white)
-            ClassicsFooter(context).setDrawableSize(20f)
+            ClassicsFooter(context).setDrawableSize(20f).setPrimaryColorId(R.color.blue_0063ff).setAccentColorId(R.color.white)
         }
     }
 

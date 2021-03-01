@@ -80,10 +80,18 @@ dependencies {
     implementation(AndroidX.glide)
     annotationProcessor AndroidX.glideCompiler
 
-    implementation(AndroidX.lifecycleExtensions)
-    implementation(AndroidX.viewBinding)
+//    def lifecycle_version = "2.2.0"
+//    // ViewModel
+//    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+//    // LiveData
+//    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+//    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+
     implementation(AndroidX.viewModel)
     implementation(AndroidX.liveData)
+    implementation(AndroidX.lifecycleExtensions)
+    implementation(AndroidX.viewBinding)
+
     implementation(AndroidX.startup)
     implementation(AndroidX.design)
     implementation(AndroidX.flexbox)
@@ -123,6 +131,7 @@ dependencies {
     implementation(AndroidX.viewpager2)
     implementation(AndroidX.stickyDecration)
     implementation(AndroidX.lutils)
+//    implementation 'com.github.KiWiLss:LUtils:1.0.8'
 
     implementation(AndroidX.coil)
 

@@ -2,8 +2,17 @@ package com.kiwilss.wanandroid.ui.my
 
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.MainThread
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.kiwilss.wanandroid.base.BaseVMFragment
+import com.kiwilss.wanandroid.config.ArouterPage
+import com.kiwilss.wanandroid.config.EventConstant
 import com.kiwilss.wanandroid.databinding.FragmentMyBinding
+import com.kiwilss.wanandroid.ktx.core.click
+import com.kiwilss.wanandroid.ktx.startActivity
 
 /**
  *@FileName: MyFragment
@@ -19,8 +28,18 @@ class MyFragment: BaseVMFragment<FragmentMyBinding,MyViewModel>() {
     }
 
     override fun initEvent() {
+        binding.btnLogin.click {
+            startActivity(ArouterPage.LOGIN)
+        }
+        binding.btnCollect.click {
+            startActivity(ArouterPage.COLLECT)
+        }
+
     }
 
     override fun initInterface(view: View, savedInstanceState: Bundle?) {
+
+
     }
 }
+

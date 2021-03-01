@@ -6,6 +6,18 @@ import com.squareup.moshi.Json
 data class BaseBean<T>(@Json(name = "data") val data: T?,
                        @Json(name = "errorCode") val errorCode: Int,
                        @Json(name = "errorMsg") val errorMsg: String)
+
+// 通用的带有列表数据的实体
+data class BaseBeanList<T>(
+    val curPage: Int,
+    val datas: List<T>,
+    val offset: Int,
+    val over: Boolean,
+    val pageCount: Int,
+    val size: Int,
+    val total: Int
+)
+
 //通用文章
 data class ArticleBean(
     @Json(name = "apkLink")

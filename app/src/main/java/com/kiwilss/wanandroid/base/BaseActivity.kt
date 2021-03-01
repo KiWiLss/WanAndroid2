@@ -29,7 +29,7 @@ abstract class BaseActivity<VB : ViewBinding>: AppCompatActivity() , LoadingHelp
     lateinit var binding: VB
     lateinit var mLoadingHelper: LoadingHelper
     var mTitleBar: CharSequence? = null
-    var page = 1
+    var page = 0
     var pageSize = 20
 
 

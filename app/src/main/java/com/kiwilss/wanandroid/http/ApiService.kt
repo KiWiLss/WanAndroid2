@@ -3,6 +3,7 @@ package com.kiwilss.wanandroid.http
 import androidx.lifecycle.LiveData
 import com.kiwilss.wanandroid.base.BaseBean
 import com.kiwilss.wanandroid.base.ArticleBean
+import com.kiwilss.wanandroid.base.BaseBeanList
 import com.kiwilss.wanandroid.ui.home.HomeArticalBean
 import com.kiwilss.wanandroid.ui.testhttp.LoginInfo
 import com.kiwilss.wanandroid.ui.testhttp.Testt
@@ -57,5 +58,21 @@ interface ApiService {
         @Field("password") password: String
     ): BaseBean<LoginInfo>
 
+    /**
+     * 退出
+     * 方法： GET
+     * 访问了 logout 后，服务端会让客户端清除 Cookie（即cookie max-Age=0），
+     * 如果客户端 Cookie 实现合理，可以实现自动清理，如果本地做了用户账号密码和保存，及时清理。
+     */
+    @GET("user/logout/json")
+    suspend fun logout(): BaseBean<Any>
+
+    /**
+     *  获取收藏列表
+     *  http://www.wanandroid.com/lg/collect/list/0/json
+     *  @param page
+     */
+    @GET("lg/collect/list/{page}/json")
+    suspend fun getCollectList(@Path("page") page: Int): BaseBean<BaseBeanList<ArticleBean>>
 
 }
