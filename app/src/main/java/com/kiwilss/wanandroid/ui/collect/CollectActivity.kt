@@ -1,7 +1,10 @@
 package com.kiwilss.wanandroid.ui.collect
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -12,6 +15,8 @@ import com.kiwilss.wanandroid.ktx.view.finishRefreshMore
 import com.kiwilss.wanandroid.ui.home.HomeArticleAdapter
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
+import com.scwang.smart.refresh.layout.listener.ScrollBoundaryDecider
+import com.scwang.smart.refresh.layout.simple.SimpleBoundaryDecider
 import com.youth.banner.util.LogUtils
 
 /**
@@ -81,6 +86,9 @@ class CollectActivity : BaseVMActivity<ActivityCollectBinding, CollectViewModel>
         }
         binding.srlRefresh.setEnableLoadMoreWhenContentNotFull(false)
         binding.srlRefresh.autoRefresh()
+        //binding.srlRefresh.setEnableFooterFollowWhenNoMoreData(true)
+
+
 
 
     }
@@ -97,10 +105,12 @@ class CollectActivity : BaseVMActivity<ActivityCollectBinding, CollectViewModel>
                     binding.srlRefresh.finishRefresh()
                 }
                 page < pageCount -> {
+                    Log.e("MMM", ": ------------")
                     mArticleAdapter.addData(it?.datas!!)
                     binding.srlRefresh.finishLoadMore()
                 }
                 else -> {
+                    Log.e("MMM", ": ------else------")
                     binding.srlRefresh.finishLoadMoreWithNoMoreData()
                 }
             }

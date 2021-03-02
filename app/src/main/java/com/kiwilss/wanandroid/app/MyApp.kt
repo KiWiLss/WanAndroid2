@@ -23,6 +23,9 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout
 class MyApp : Application() {
 
     init {
+        SmartRefreshLayout.setDefaultRefreshInitializer { context, layout ->
+            layout.setEnableFooterFollowWhenNoMoreData(true)//设置跟随
+        }
         //设置全局的Header构建器
         SmartRefreshLayout.setDefaultRefreshHeaderCreator{context, layout ->
             layout.setPrimaryColorsId(R.color.blue_0063ff, R.color.white) //全局设置主题颜色,前一个背景色,后面文字颜色
