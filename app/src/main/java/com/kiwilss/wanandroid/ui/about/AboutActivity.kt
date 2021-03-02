@@ -3,11 +3,15 @@ package com.kiwilss.wanandroid.ui.about
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.LogUtils
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.dylanc.loadinghelper.ViewType
 import com.jeremyliao.liveeventbus.LiveEventBus
+import com.kiwilss.wanandroid.R
 import com.kiwilss.wanandroid.base.BaseActivity
 import com.kiwilss.wanandroid.config.ArouterPage
 import com.kiwilss.wanandroid.databinding.ActivityAboutBinding
@@ -17,6 +21,8 @@ import com.kiwilss.wanandroid.ktx.RouterKtx.startActivity
 import com.kiwilss.wanandroid.ktx.core.click
 import com.kiwilss.wanandroid.ktx.core.postDelay
 import com.kiwilss.wanandroid.statuslayout.TitleAdapter
+import com.scwang.smart.refresh.layout.api.RefreshLayout
+import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
 
 /**
  *@FileName: AboutActivity
@@ -70,12 +76,41 @@ class AboutActivity : BaseActivity<ActivityAboutBinding>(){
     }
 
     override fun initInterface(savedInstanceState: Bundle?) {
-        showLoadingDiloag()
+        //showLoadingDiloag()
         LogUtils.e(key)
         binding.tvAboutShow.text = key
 
         postDelay (2000){
             dismissLoadingDiloag()
         }
+
+        val aboutAdapter = AboutAdapter()
+        binding.run {
+            rvList.layoutManager = LinearLayoutManager(this@AboutActivity)
+            rvList.adapter = aboutAdapter
+        }
+
+        aboutAdapter.setList(arrayListOf("1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1",))
+
+        binding.srlRefresh.setOnRefreshLoadMoreListener(object :OnRefreshLoadMoreListener{
+            override fun onLoadMore(refreshLayout: RefreshLayout) {
+                LogUtils.e("onLoadMore")
+                binding.srlRefresh.finishLoadMore()
+            }
+
+            override fun onRefresh(refreshLayout: RefreshLayout) {
+                LogUtils.e("onRefresh")
+                binding.srlRefresh.finishRefresh()
+            }
+
+        })
+        binding.srlRefresh.autoRefresh()
     }
+}
+
+class AboutAdapter: BaseQuickAdapter<String,BaseViewHolder>(R.layout.item_style_delivery){
+    override fun convert(holder: BaseViewHolder, item: String) {
+
+    }
+
 }

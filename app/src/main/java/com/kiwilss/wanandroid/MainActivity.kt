@@ -86,6 +86,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 LiveEventBus.get(EventConstant.is_scroll_top).post(true)
             }
         }
+
     }
 
     private fun changeViewPager(tvText: TextView, next: Int) {
@@ -132,7 +133,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }
             isSearch = it
         }
-
+        LogUtils.e("main")
     }
 
     private fun initFragment() {

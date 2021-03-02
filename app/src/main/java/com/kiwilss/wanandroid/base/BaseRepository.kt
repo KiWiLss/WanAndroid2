@@ -18,7 +18,7 @@ open class BaseRepository {
             call.invoke()
         }.apply {
             //统一处理返回结果
-            LogUtils.e("接口返回数据-----> $this")
+            LogUtils.i("接口返回数据-----> $this")
             //这儿可以对返回结果errorCode做一些特殊处理，比如token失效等，可以通过抛出异常的方式实现
             //例：当token失效时，后台返回errorCode 为 100，下面代码实现,再到baseActivity通过观察error来处理
             when (errorCode) {
