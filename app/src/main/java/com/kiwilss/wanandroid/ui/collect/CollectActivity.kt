@@ -1,13 +1,13 @@
 package com.kiwilss.wanandroid.ui.collect
 
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.blankj.utilcode.util.LogUtils
 import com.kiwilss.wanandroid.base.BaseVMActivity
 import com.kiwilss.wanandroid.config.ArouterPage
 import com.kiwilss.wanandroid.databinding.ActivityCollectBinding
@@ -15,9 +15,6 @@ import com.kiwilss.wanandroid.ktx.view.finishRefreshMore
 import com.kiwilss.wanandroid.ui.home.HomeArticleAdapter
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
-import com.scwang.smart.refresh.layout.listener.ScrollBoundaryDecider
-import com.scwang.smart.refresh.layout.simple.SimpleBoundaryDecider
-import com.youth.banner.util.LogUtils
 
 /**
  * @author : Administrator
@@ -88,14 +85,34 @@ class CollectActivity : BaseVMActivity<ActivityCollectBinding, CollectViewModel>
         binding.srlRefresh.autoRefresh()
         //binding.srlRefresh.setEnableFooterFollowWhenNoMoreData(true)
 
+//        mArticleAdapter.loadMoreModule.preLoadNumber = 4
+//        mArticleAdapter.loadMoreModule.setOnLoadMoreListener {
+//            LogUtils.e("setOnLoadMoreListener")
+//        }
 
+        //设置预加载
+        binding.rvList.addOnScrollListener(object :RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val layoutManager: LinearLayoutManager = binding.rvList.layoutManager as LinearLayoutManager
+                val itemCount: Int = layoutManager.itemCount
+                val lastPos: Int = layoutManager.findLastCompletelyVisibleItemPosition()
+                val last = layoutManager.findLastVisibleItemPosition()
+                LogUtils.e("onScrolled: $itemCount ------- $lastPos ----- $last")
+                if (last == itemCount - 6){
+                    LogUtils.e("触发加载条件")
+                    page++
+                    initCollectData()
+                }
+            }
+        })
 
 
     }
 
     private fun initCollectData() {
         viewModel.getCollectList(page).observe(this, Observer {
-            LogUtils.e(it?.toString())
+           // LogUtils.e(it?.toString())
             //finishRefresh()
             pageCount = it?.pageCount ?: 0
             Log.e("MMM", ": $page---$pageCount")

@@ -77,3 +77,5 @@ private fun intervalLog(level: LogLevel, tag: String, msg: String){
         }
     }
 }
+
+

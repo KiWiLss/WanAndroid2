@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.kiwilss.wanandroid.R
 import com.kiwilss.wanandroid.base.ArticleBean

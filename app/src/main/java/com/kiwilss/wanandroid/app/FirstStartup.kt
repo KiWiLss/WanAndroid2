@@ -27,7 +27,7 @@ class FirstStartup: AndroidStartup<String>() {
     override fun callCreateOnMainThread(): Boolean = false
 
     override fun create(context: Context): String? {
-        AndroidKTX.init(context,defaultLogTag = "MMM")
+        AndroidKTX.init(context,defaultLogTag = "MMM",isDebug = Constant.isShowLog)
         Utils.init(MyApp.instance)
         LogUtils.getConfig().setLogSwitch(Constant.isShowLog).globalTag = "MMM"
         //toast,topbar,snackbar初始化

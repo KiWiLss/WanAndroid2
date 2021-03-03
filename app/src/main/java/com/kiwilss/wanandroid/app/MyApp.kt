@@ -25,6 +25,7 @@ class MyApp : Application() {
     init {
         SmartRefreshLayout.setDefaultRefreshInitializer { context, layout ->
             layout.setEnableFooterFollowWhenNoMoreData(true)//设置跟随
+            layout.setEnableAutoLoadMore(true)//是否启用列表惯性滑动到底部时自动加载更多
         }
         //设置全局的Header构建器
         SmartRefreshLayout.setDefaultRefreshHeaderCreator{context, layout ->
