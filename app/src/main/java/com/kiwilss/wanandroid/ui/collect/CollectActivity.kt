@@ -110,6 +110,9 @@ class CollectActivity : BaseVMActivity<ActivityCollectBinding, CollectViewModel>
 
     }
 
+    //https://github.com/KiWiLss/WanAndroid2.git
+    //https://gitclone.com/github.com/KiWiLss/WanAndroid2.git
+
     private fun initCollectData() {
         viewModel.getCollectList(page).observe(this, Observer {
            // LogUtils.e(it?.toString())
