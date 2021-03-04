@@ -128,6 +128,7 @@ class CollectActivity : BaseVMActivity<ActivityCollectBinding, CollectViewModel>
 
     }
 
+    //https://gitee.com/kiwilss/WanAndroid.git
     //https://github.com/KiWiLss/WanAndroid2.git
     //https://gitclone.com/github.com/KiWiLss/WanAndroid2.git
 
