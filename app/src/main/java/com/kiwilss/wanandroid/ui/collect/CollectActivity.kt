@@ -11,6 +11,7 @@ import com.blankj.utilcode.util.LogUtils
 import com.kiwilss.wanandroid.base.BaseVMActivity
 import com.kiwilss.wanandroid.config.ArouterPage
 import com.kiwilss.wanandroid.databinding.ActivityCollectBinding
+import com.kiwilss.wanandroid.ktx.core.loge
 import com.kiwilss.wanandroid.ktx.view.finishRefreshMore
 import com.kiwilss.wanandroid.ui.home.HomeArticleAdapter
 import com.scwang.smart.refresh.layout.api.RefreshLayout
@@ -23,9 +24,19 @@ import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
  *  desc   :
  */
 @Route(path = ArouterPage.COLLECT)
-class CollectActivity : BaseVMActivity<ActivityCollectBinding, CollectViewModel>() ,
-    OnRefreshLoadMoreListener{
-    val mArticleAdapter by lazy { HomeArticleAdapter() }
+class CollectActivity : BaseVMActivity<ActivityCollectBinding, CollectViewModel>(),
+    OnRefreshLoadMoreListener {
+
+    //设置预加载方法二,https://juejin.cn/post/6885146484791050247
+    private val mArticleAdapter by lazy {
+        HomeArticleAdapter().apply {
+            preloadItemCount = 5
+            onPreload = {//触发预加载回调
+                page++
+                initCollectData()
+            }
+        }
+    }
 
     var pageCount = 0
     override fun providerVMClass(): Class<CollectViewModel> = CollectViewModel::class.java
@@ -61,7 +72,6 @@ class CollectActivity : BaseVMActivity<ActivityCollectBinding, CollectViewModel>
     }
 
 
-
     override fun initInterface(savedInstanceState: Bundle?) {
 
         //不设置监听,自动结束刷新和加载更多
@@ -90,23 +100,31 @@ class CollectActivity : BaseVMActivity<ActivityCollectBinding, CollectViewModel>
 //            LogUtils.e("setOnLoadMoreListener")
 //        }
 
-        //设置预加载
-        binding.rvList.addOnScrollListener(object :RecyclerView.OnScrollListener(){
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                val layoutManager: LinearLayoutManager = binding.rvList.layoutManager as LinearLayoutManager
-                val itemCount: Int = layoutManager.itemCount
-                val lastPos: Int = layoutManager.findLastCompletelyVisibleItemPosition()
-                val last = layoutManager.findLastVisibleItemPosition()
-                LogUtils.e("onScrolled: $itemCount ------- $lastPos ----- $last")
-                if (last == itemCount - 6){
-                    LogUtils.e("触发加载条件")
-                    page++
-                    initCollectData()
-                }
-            }
-        })
-
+        "------".loge()
+        //设置预加载,方法一
+//        binding.rvList.addOnScrollListener(object :RecyclerView.OnScrollListener(){
+//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                super.onScrolled(recyclerView, dx, dy)
+//                val layoutManager: LinearLayoutManager = binding.rvList.layoutManager as LinearLayoutManager
+//                val itemCount: Int = layoutManager.itemCount
+//                val lastPos: Int = layoutManager.findLastCompletelyVisibleItemPosition()
+//                val last = layoutManager.findLastVisibleItemPosition()
+//                LogUtils.e("onScrolled: $itemCount ------- $lastPos ----- $last")
+//                if (dy > 0 && last == itemCount - 6){
+//                    LogUtils.e("触发加载条件")
+//                    page++
+//                    initCollectData()
+//                }
+//            }
+//        })
+        //设置预加载方法二,https://juejin.cn/post/6885146484791050247
+//        mArticleAdapter.apply {
+//            preloadItemCount = 5
+//            onPreload = {//触发预加载回调
+//                page++
+//                initCollectData()
+//            }
+//        }
 
     }
 
@@ -115,7 +133,7 @@ class CollectActivity : BaseVMActivity<ActivityCollectBinding, CollectViewModel>
 
     private fun initCollectData() {
         viewModel.getCollectList(page).observe(this, Observer {
-           // LogUtils.e(it?.toString())
+            // LogUtils.e(it?.toString())
             //finishRefresh()
             pageCount = it?.pageCount ?: 0
             Log.e("MMM", ": $page---$pageCount")
@@ -140,12 +158,12 @@ class CollectActivity : BaseVMActivity<ActivityCollectBinding, CollectViewModel>
 
     override fun onLoadMore(refreshLayout: RefreshLayout) {
         page++
-       if (page < pageCount){
-           initData()
-       }else{
-           binding.srlRefresh.finishLoadMoreWithNoMoreData()
+        if (page < pageCount) {
+            initData()
+        } else {
+            binding.srlRefresh.finishLoadMoreWithNoMoreData()
 //           binding.srlRefresh.setNoMoreData(false)
-       }
+        }
     }
 
     override fun onRefresh(refreshLayout: RefreshLayout) {
