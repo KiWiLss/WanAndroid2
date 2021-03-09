@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.LogUtils
 import com.kiwilss.wanandroid.base.BaseVMActivity
@@ -82,6 +83,7 @@ class CollectActivity : BaseVMActivity<ActivityCollectBinding, CollectViewModel>
             page = 0
             initCollectData()
         }
+        binding.srlRefresh.setEnableOverScrollBounce(false);//是否启用越界回弹
         binding.srlRefresh.setOnLoadMoreListener {
             page++
             initCollectData()
@@ -125,6 +127,7 @@ class CollectActivity : BaseVMActivity<ActivityCollectBinding, CollectViewModel>
 //                initCollectData()
 //            }
 //        }
+
 
     }
 

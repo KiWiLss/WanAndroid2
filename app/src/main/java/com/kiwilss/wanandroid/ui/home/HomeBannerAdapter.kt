@@ -84,7 +84,6 @@ class HomeArticleAdapter: BaseQuickAdapter<ArticleBean,BaseViewHolder>(R.layout.
             isPreloading = true // 表示正在执行预加载
             onPreload?.invoke()
         }
-
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
